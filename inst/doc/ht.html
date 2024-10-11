@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Getting started</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Getting started</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(sapo)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">#&gt; Linking to GEOS 3.12.2, GDAL 3.9.1, PROJ 9.4.1; sf_use_s2() is TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span></code></pre></div>
+<blockquote>
+<p>The <code>sapo</code> package provides a Monte Carlo test for
+evaluating spatial association between polygons. For reproducibility,
+set a seed before using the functions.</p>
+</blockquote>
+<p>This vignette illustrates the functionality of the <code>sapo</code>
+package. <code>sapo</code>, which is Portuguese for “toad,” stands for
+“<strong>S</strong>patial <strong>A</strong>ssociation Between
+<strong>Po</strong>lygons”. This package enables you to test whether two
+types of polygons are spatially associated. This raises two key
+questions: 1) What do these “polygon types” represent? and 2) What
+constitutes spatial association?</p>
+<p>Polygons can represent various spatial entities. In ecology, for
+instance, polygons might represent ecological patches <span class="citation">(McGarigal 2013)</span>, animal home ranges, or forest
+canopy gaps. It’s often important to determine if two types of spatial
+phenomena (like those mentioned above) tend to attract or repel each
+other. Conditional Monte Carlo (MC) hypothesis tests <span class="citation">(Godoy, Assunção, and Butler 2022)</span> offer a way
+to test these hypotheses. The <code>cmc_psat</code> function
+(conditional MC polygon association test) implements these methods. All
+methods are based on conditional MC simulation, generating spatial
+patterns that assume spatial independence (using an adaptation of the
+toroidal shift<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>) while preserving the observed marginal
+spatial structures.</p>
+<p>To illustrate the package’s functionality, consider two simulated
+polygon types, <code>poly1</code> and <code>poly2</code>, loaded below
+as <code>sf</code> objects. These will represent two distinct spatial
+features. Our goal is to test whether they are <em>spatially
+independent</em>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>poly1 <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;poly1.rds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;sapo&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="fu">readRDS</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>poly2 <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;poly2.rds&quot;</span>, <span class="at">package =</span> <span class="st">&quot;sapo&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="fu">readRDS</span>()</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">str</span>(poly1)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; Classes &#39;sf&#39; and &#39;data.frame&#39;:   20 obs. of  2 variables:</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt;  $ id      : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt;  $ geometry:sfc_POLYGON of length 20; first list element: List of 1</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt;   ..$ : num [1:7, 1:2] 0.00727 0.04896 0.07805 0.07173 0 ...</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;class&quot;)= chr [1:3] &quot;XY&quot; &quot;POLYGON&quot; &quot;sfg&quot;</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;sf_column&quot;)= chr &quot;geometry&quot;</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;agr&quot;)= Factor w/ 3 levels &quot;constant&quot;,&quot;aggregate&quot;,..: </span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr(0)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">str</span>(poly2)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; Classes &#39;sf&#39; and &#39;data.frame&#39;:   25 obs. of  2 variables:</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt;  $ id      : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt;  $ geometry:sfc_POLYGON of length 25; first list element: List of 1</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt;   ..$ : num [1:5, 1:2] 0.6 0.7 0.7 0.6 0.6 0.3 0.3 0.4 0.4 0.3</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;class&quot;)= chr [1:3] &quot;XY&quot; &quot;POLYGON&quot; &quot;sfg&quot;</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;sf_column&quot;)= chr &quot;geometry&quot;</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;agr&quot;)= Factor w/ 3 levels &quot;constant&quot;,&quot;aggregate&quot;,..: </span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr(0)</span></span></code></pre></div>
+<p>Below, we plot these polygon types from this toy example.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(poly1), <span class="at">col =</span> <span class="st">&quot;gray70&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(poly2), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<p>The <code>cmc_psat</code> function requires that its first two
+arguments, <code>p1</code> and <code>p2</code>, are <code>sf</code>
+objects. Other important arguments include:</p>
+<ul>
+<li><p><code>n_sim</code> (default = 499): An integer specifying the
+number of conditional MC simulations under the null hypothesis of
+spatial independence.</p></li>
+<li><p><code>alpha</code> (default = 0.05): A real number (between 0 and
+1) indicating the significance level for the hypothesis test.</p></li>
+</ul>
+<p>For a deeper understanding of the remaining arguments, refer to <span class="citation">Godoy, Assunção, and Butler (2022)</span>, which
+provides a comprehensive explanation of the method. The default argument
+values generally optimize the test’s power and type I error rate.</p>
+<p>The code below tests whether <code>poly1</code> and
+<code>poly2</code> are <em>spatially independent</em>. In essence, it
+assesses whether the presence of a type 2 polygon affects the likelihood
+of observing a type 1 polygon.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>my_ht <span class="ot">&lt;-</span> <span class="fu">cmc_psat</span>(poly1, poly2)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-44"><a href="#cb6-44" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-45"><a href="#cb6-45" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-46"><a href="#cb6-46" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-47"><a href="#cb6-47" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-48"><a href="#cb6-48" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-49"><a href="#cb6-49" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-50"><a href="#cb6-50" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-51"><a href="#cb6-51" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-52"><a href="#cb6-52" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-53"><a href="#cb6-53" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-54"><a href="#cb6-54" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-55"><a href="#cb6-55" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-56"><a href="#cb6-56" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-57"><a href="#cb6-57" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-58"><a href="#cb6-58" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-59"><a href="#cb6-59" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-60"><a href="#cb6-60" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-61"><a href="#cb6-61" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-62"><a href="#cb6-62" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-63"><a href="#cb6-63" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-64"><a href="#cb6-64" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-65"><a href="#cb6-65" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-66"><a href="#cb6-66" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-67"><a href="#cb6-67" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-68"><a href="#cb6-68" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-69"><a href="#cb6-69" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-70"><a href="#cb6-70" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-71"><a href="#cb6-71" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-72"><a href="#cb6-72" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-73"><a href="#cb6-73" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-74"><a href="#cb6-74" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-75"><a href="#cb6-75" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-76"><a href="#cb6-76" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-77"><a href="#cb6-77" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-78"><a href="#cb6-78" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-79"><a href="#cb6-79" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-80"><a href="#cb6-80" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-81"><a href="#cb6-81" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-82"><a href="#cb6-82" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-83"><a href="#cb6-83" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-84"><a href="#cb6-84" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-85"><a href="#cb6-85" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-86"><a href="#cb6-86" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-87"><a href="#cb6-87" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-88"><a href="#cb6-88" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-89"><a href="#cb6-89" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-90"><a href="#cb6-90" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-91"><a href="#cb6-91" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-92"><a href="#cb6-92" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-93"><a href="#cb6-93" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-94"><a href="#cb6-94" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-95"><a href="#cb6-95" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-96"><a href="#cb6-96" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-97"><a href="#cb6-97" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-98"><a href="#cb6-98" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-99"><a href="#cb6-99" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-100"><a href="#cb6-100" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-101"><a href="#cb6-101" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-102"><a href="#cb6-102" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-103"><a href="#cb6-103" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-104"><a href="#cb6-104" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-105"><a href="#cb6-105" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-106"><a href="#cb6-106" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-107"><a href="#cb6-107" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-108"><a href="#cb6-108" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-109"><a href="#cb6-109" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-110"><a href="#cb6-110" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-111"><a href="#cb6-111" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-112"><a href="#cb6-112" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-113"><a href="#cb6-113" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-114"><a href="#cb6-114" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-115"><a href="#cb6-115" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-116"><a href="#cb6-116" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-117"><a href="#cb6-117" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-118"><a href="#cb6-118" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-119"><a href="#cb6-119" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-120"><a href="#cb6-120" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-121"><a href="#cb6-121" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-122"><a href="#cb6-122" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-123"><a href="#cb6-123" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-124"><a href="#cb6-124" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-125"><a href="#cb6-125" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-126"><a href="#cb6-126" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-127"><a href="#cb6-127" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-128"><a href="#cb6-128" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-129"><a href="#cb6-129" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-130"><a href="#cb6-130" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-131"><a href="#cb6-131" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-132"><a href="#cb6-132" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-133"><a href="#cb6-133" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-134"><a href="#cb6-134" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-135"><a href="#cb6-135" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-136"><a href="#cb6-136" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-137"><a href="#cb6-137" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-138"><a href="#cb6-138" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-139"><a href="#cb6-139" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-140"><a href="#cb6-140" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-141"><a href="#cb6-141" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-142"><a href="#cb6-142" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-143"><a href="#cb6-143" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-144"><a href="#cb6-144" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-145"><a href="#cb6-145" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-146"><a href="#cb6-146" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-147"><a href="#cb6-147" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-148"><a href="#cb6-148" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-149"><a href="#cb6-149" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-150"><a href="#cb6-150" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-151"><a href="#cb6-151" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-152"><a href="#cb6-152" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-153"><a href="#cb6-153" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-154"><a href="#cb6-154" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-155"><a href="#cb6-155" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-156"><a href="#cb6-156" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-157"><a href="#cb6-157" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-158"><a href="#cb6-158" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-159"><a href="#cb6-159" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-160"><a href="#cb6-160" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-161"><a href="#cb6-161" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-162"><a href="#cb6-162" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-163"><a href="#cb6-163" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-164"><a href="#cb6-164" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-165"><a href="#cb6-165" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-166"><a href="#cb6-166" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-167"><a href="#cb6-167" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-168"><a href="#cb6-168" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-169"><a href="#cb6-169" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-170"><a href="#cb6-170" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-171"><a href="#cb6-171" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-172"><a href="#cb6-172" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-173"><a href="#cb6-173" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-174"><a href="#cb6-174" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-175"><a href="#cb6-175" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-176"><a href="#cb6-176" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-177"><a href="#cb6-177" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-178"><a href="#cb6-178" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-179"><a href="#cb6-179" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-180"><a href="#cb6-180" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-181"><a href="#cb6-181" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-182"><a href="#cb6-182" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-183"><a href="#cb6-183" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-184"><a href="#cb6-184" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-185"><a href="#cb6-185" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-186"><a href="#cb6-186" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-187"><a href="#cb6-187" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-188"><a href="#cb6-188" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-189"><a href="#cb6-189" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-190"><a href="#cb6-190" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-191"><a href="#cb6-191" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-192"><a href="#cb6-192" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-193"><a href="#cb6-193" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-194"><a href="#cb6-194" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-195"><a href="#cb6-195" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-196"><a href="#cb6-196" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-197"><a href="#cb6-197" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-198"><a href="#cb6-198" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-199"><a href="#cb6-199" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-200"><a href="#cb6-200" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-201"><a href="#cb6-201" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-202"><a href="#cb6-202" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-203"><a href="#cb6-203" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-204"><a href="#cb6-204" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-205"><a href="#cb6-205" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-206"><a href="#cb6-206" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-207"><a href="#cb6-207" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-208"><a href="#cb6-208" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-209"><a href="#cb6-209" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-210"><a href="#cb6-210" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-211"><a href="#cb6-211" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-212"><a href="#cb6-212" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-213"><a href="#cb6-213" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-214"><a href="#cb6-214" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-215"><a href="#cb6-215" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-216"><a href="#cb6-216" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-217"><a href="#cb6-217" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-218"><a href="#cb6-218" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-219"><a href="#cb6-219" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-220"><a href="#cb6-220" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-221"><a href="#cb6-221" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-222"><a href="#cb6-222" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-223"><a href="#cb6-223" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-224"><a href="#cb6-224" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-225"><a href="#cb6-225" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-226"><a href="#cb6-226" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-227"><a href="#cb6-227" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-228"><a href="#cb6-228" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-229"><a href="#cb6-229" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-230"><a href="#cb6-230" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-231"><a href="#cb6-231" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-232"><a href="#cb6-232" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-233"><a href="#cb6-233" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-234"><a href="#cb6-234" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-235"><a href="#cb6-235" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-236"><a href="#cb6-236" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-237"><a href="#cb6-237" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-238"><a href="#cb6-238" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-239"><a href="#cb6-239" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-240"><a href="#cb6-240" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-241"><a href="#cb6-241" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-242"><a href="#cb6-242" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-243"><a href="#cb6-243" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-244"><a href="#cb6-244" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-245"><a href="#cb6-245" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-246"><a href="#cb6-246" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-247"><a href="#cb6-247" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-248"><a href="#cb6-248" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-249"><a href="#cb6-249" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-250"><a href="#cb6-250" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-251"><a href="#cb6-251" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-252"><a href="#cb6-252" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-253"><a href="#cb6-253" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-254"><a href="#cb6-254" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-255"><a href="#cb6-255" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-256"><a href="#cb6-256" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-257"><a href="#cb6-257" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-258"><a href="#cb6-258" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-259"><a href="#cb6-259" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-260"><a href="#cb6-260" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-261"><a href="#cb6-261" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-262"><a href="#cb6-262" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-263"><a href="#cb6-263" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-264"><a href="#cb6-264" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-265"><a href="#cb6-265" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-266"><a href="#cb6-266" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-267"><a href="#cb6-267" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-268"><a href="#cb6-268" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-269"><a href="#cb6-269" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-270"><a href="#cb6-270" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-271"><a href="#cb6-271" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-272"><a href="#cb6-272" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-273"><a href="#cb6-273" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-274"><a href="#cb6-274" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-275"><a href="#cb6-275" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-276"><a href="#cb6-276" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-277"><a href="#cb6-277" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-278"><a href="#cb6-278" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-279"><a href="#cb6-279" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-280"><a href="#cb6-280" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-281"><a href="#cb6-281" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-282"><a href="#cb6-282" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-283"><a href="#cb6-283" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-284"><a href="#cb6-284" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-285"><a href="#cb6-285" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-286"><a href="#cb6-286" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-287"><a href="#cb6-287" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-288"><a href="#cb6-288" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-289"><a href="#cb6-289" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-290"><a href="#cb6-290" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-291"><a href="#cb6-291" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-292"><a href="#cb6-292" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-293"><a href="#cb6-293" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-294"><a href="#cb6-294" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-295"><a href="#cb6-295" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-296"><a href="#cb6-296" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-297"><a href="#cb6-297" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-298"><a href="#cb6-298" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-299"><a href="#cb6-299" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-300"><a href="#cb6-300" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-301"><a href="#cb6-301" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-302"><a href="#cb6-302" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-303"><a href="#cb6-303" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-304"><a href="#cb6-304" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-305"><a href="#cb6-305" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-306"><a href="#cb6-306" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-307"><a href="#cb6-307" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-308"><a href="#cb6-308" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-309"><a href="#cb6-309" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-310"><a href="#cb6-310" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-311"><a href="#cb6-311" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-312"><a href="#cb6-312" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-313"><a href="#cb6-313" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-314"><a href="#cb6-314" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-315"><a href="#cb6-315" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-316"><a href="#cb6-316" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-317"><a href="#cb6-317" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-318"><a href="#cb6-318" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-319"><a href="#cb6-319" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-320"><a href="#cb6-320" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-321"><a href="#cb6-321" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-322"><a href="#cb6-322" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-323"><a href="#cb6-323" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-324"><a href="#cb6-324" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-325"><a href="#cb6-325" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-326"><a href="#cb6-326" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-327"><a href="#cb6-327" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-328"><a href="#cb6-328" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-329"><a href="#cb6-329" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-330"><a href="#cb6-330" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-331"><a href="#cb6-331" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-332"><a href="#cb6-332" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-333"><a href="#cb6-333" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-334"><a href="#cb6-334" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-335"><a href="#cb6-335" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-336"><a href="#cb6-336" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-337"><a href="#cb6-337" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-338"><a href="#cb6-338" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-339"><a href="#cb6-339" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-340"><a href="#cb6-340" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-341"><a href="#cb6-341" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-342"><a href="#cb6-342" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-343"><a href="#cb6-343" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-344"><a href="#cb6-344" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-345"><a href="#cb6-345" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-346"><a href="#cb6-346" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-347"><a href="#cb6-347" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-348"><a href="#cb6-348" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-349"><a href="#cb6-349" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-350"><a href="#cb6-350" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-351"><a href="#cb6-351" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-352"><a href="#cb6-352" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-353"><a href="#cb6-353" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-354"><a href="#cb6-354" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-355"><a href="#cb6-355" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-356"><a href="#cb6-356" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-357"><a href="#cb6-357" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-358"><a href="#cb6-358" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-359"><a href="#cb6-359" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-360"><a href="#cb6-360" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-361"><a href="#cb6-361" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-362"><a href="#cb6-362" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-363"><a href="#cb6-363" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-364"><a href="#cb6-364" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-365"><a href="#cb6-365" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-366"><a href="#cb6-366" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-367"><a href="#cb6-367" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-368"><a href="#cb6-368" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-369"><a href="#cb6-369" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-370"><a href="#cb6-370" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-371"><a href="#cb6-371" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-372"><a href="#cb6-372" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-373"><a href="#cb6-373" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-374"><a href="#cb6-374" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-375"><a href="#cb6-375" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-376"><a href="#cb6-376" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-377"><a href="#cb6-377" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-378"><a href="#cb6-378" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-379"><a href="#cb6-379" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-380"><a href="#cb6-380" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-381"><a href="#cb6-381" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-382"><a href="#cb6-382" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-383"><a href="#cb6-383" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-384"><a href="#cb6-384" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-385"><a href="#cb6-385" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-386"><a href="#cb6-386" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-387"><a href="#cb6-387" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-388"><a href="#cb6-388" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-389"><a href="#cb6-389" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-390"><a href="#cb6-390" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-391"><a href="#cb6-391" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-392"><a href="#cb6-392" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-393"><a href="#cb6-393" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-394"><a href="#cb6-394" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-395"><a href="#cb6-395" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-396"><a href="#cb6-396" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-397"><a href="#cb6-397" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-398"><a href="#cb6-398" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-399"><a href="#cb6-399" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-400"><a href="#cb6-400" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-401"><a href="#cb6-401" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-402"><a href="#cb6-402" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-403"><a href="#cb6-403" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-404"><a href="#cb6-404" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-405"><a href="#cb6-405" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-406"><a href="#cb6-406" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-407"><a href="#cb6-407" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-408"><a href="#cb6-408" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-409"><a href="#cb6-409" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-410"><a href="#cb6-410" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-411"><a href="#cb6-411" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-412"><a href="#cb6-412" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-413"><a href="#cb6-413" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-414"><a href="#cb6-414" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-415"><a href="#cb6-415" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-416"><a href="#cb6-416" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-417"><a href="#cb6-417" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-418"><a href="#cb6-418" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-419"><a href="#cb6-419" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-420"><a href="#cb6-420" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-421"><a href="#cb6-421" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-422"><a href="#cb6-422" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-423"><a href="#cb6-423" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-424"><a href="#cb6-424" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-425"><a href="#cb6-425" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-426"><a href="#cb6-426" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-427"><a href="#cb6-427" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-428"><a href="#cb6-428" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-429"><a href="#cb6-429" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-430"><a href="#cb6-430" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-431"><a href="#cb6-431" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-432"><a href="#cb6-432" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-433"><a href="#cb6-433" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-434"><a href="#cb6-434" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-435"><a href="#cb6-435" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-436"><a href="#cb6-436" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-437"><a href="#cb6-437" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-438"><a href="#cb6-438" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-439"><a href="#cb6-439" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-440"><a href="#cb6-440" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-441"><a href="#cb6-441" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-442"><a href="#cb6-442" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-443"><a href="#cb6-443" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-444"><a href="#cb6-444" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-445"><a href="#cb6-445" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-446"><a href="#cb6-446" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-447"><a href="#cb6-447" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-448"><a href="#cb6-448" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-449"><a href="#cb6-449" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-450"><a href="#cb6-450" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-451"><a href="#cb6-451" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-452"><a href="#cb6-452" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-453"><a href="#cb6-453" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-454"><a href="#cb6-454" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-455"><a href="#cb6-455" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-456"><a href="#cb6-456" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-457"><a href="#cb6-457" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-458"><a href="#cb6-458" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-459"><a href="#cb6-459" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-460"><a href="#cb6-460" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-461"><a href="#cb6-461" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-462"><a href="#cb6-462" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-463"><a href="#cb6-463" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-464"><a href="#cb6-464" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-465"><a href="#cb6-465" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-466"><a href="#cb6-466" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-467"><a href="#cb6-467" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-468"><a href="#cb6-468" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-469"><a href="#cb6-469" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-470"><a href="#cb6-470" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-471"><a href="#cb6-471" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-472"><a href="#cb6-472" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-473"><a href="#cb6-473" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-474"><a href="#cb6-474" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-475"><a href="#cb6-475" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-476"><a href="#cb6-476" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-477"><a href="#cb6-477" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-478"><a href="#cb6-478" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-479"><a href="#cb6-479" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-480"><a href="#cb6-480" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-481"><a href="#cb6-481" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-482"><a href="#cb6-482" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-483"><a href="#cb6-483" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-484"><a href="#cb6-484" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-485"><a href="#cb6-485" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-486"><a href="#cb6-486" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-487"><a href="#cb6-487" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-488"><a href="#cb6-488" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-489"><a href="#cb6-489" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-490"><a href="#cb6-490" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-491"><a href="#cb6-491" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-492"><a href="#cb6-492" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-493"><a href="#cb6-493" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-494"><a href="#cb6-494" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-495"><a href="#cb6-495" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-496"><a href="#cb6-496" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-497"><a href="#cb6-497" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-498"><a href="#cb6-498" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-499"><a href="#cb6-499" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-500"><a href="#cb6-500" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-501"><a href="#cb6-501" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-502"><a href="#cb6-502" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-503"><a href="#cb6-503" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-504"><a href="#cb6-504" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-505"><a href="#cb6-505" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-506"><a href="#cb6-506" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-507"><a href="#cb6-507" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-508"><a href="#cb6-508" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-509"><a href="#cb6-509" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-510"><a href="#cb6-510" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-511"><a href="#cb6-511" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-512"><a href="#cb6-512" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-513"><a href="#cb6-513" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-514"><a href="#cb6-514" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-515"><a href="#cb6-515" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-516"><a href="#cb6-516" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-517"><a href="#cb6-517" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-518"><a href="#cb6-518" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-519"><a href="#cb6-519" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-520"><a href="#cb6-520" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-521"><a href="#cb6-521" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-522"><a href="#cb6-522" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-523"><a href="#cb6-523" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-524"><a href="#cb6-524" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-525"><a href="#cb6-525" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-526"><a href="#cb6-526" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-527"><a href="#cb6-527" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-528"><a href="#cb6-528" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-529"><a href="#cb6-529" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-530"><a href="#cb6-530" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-531"><a href="#cb6-531" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-532"><a href="#cb6-532" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-533"><a href="#cb6-533" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-534"><a href="#cb6-534" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-535"><a href="#cb6-535" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-536"><a href="#cb6-536" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-537"><a href="#cb6-537" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-538"><a href="#cb6-538" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-539"><a href="#cb6-539" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-540"><a href="#cb6-540" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-541"><a href="#cb6-541" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-542"><a href="#cb6-542" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-543"><a href="#cb6-543" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-544"><a href="#cb6-544" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-545"><a href="#cb6-545" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-546"><a href="#cb6-546" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-547"><a href="#cb6-547" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-548"><a href="#cb6-548" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-549"><a href="#cb6-549" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-550"><a href="#cb6-550" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-551"><a href="#cb6-551" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-552"><a href="#cb6-552" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-553"><a href="#cb6-553" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-554"><a href="#cb6-554" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-555"><a href="#cb6-555" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-556"><a href="#cb6-556" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-557"><a href="#cb6-557" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-558"><a href="#cb6-558" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-559"><a href="#cb6-559" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-560"><a href="#cb6-560" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-561"><a href="#cb6-561" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-562"><a href="#cb6-562" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-563"><a href="#cb6-563" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-564"><a href="#cb6-564" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-565"><a href="#cb6-565" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-566"><a href="#cb6-566" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-567"><a href="#cb6-567" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-568"><a href="#cb6-568" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-569"><a href="#cb6-569" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-570"><a href="#cb6-570" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-571"><a href="#cb6-571" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-572"><a href="#cb6-572" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-573"><a href="#cb6-573" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-574"><a href="#cb6-574" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-575"><a href="#cb6-575" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-576"><a href="#cb6-576" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-577"><a href="#cb6-577" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-578"><a href="#cb6-578" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-579"><a href="#cb6-579" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-580"><a href="#cb6-580" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-581"><a href="#cb6-581" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-582"><a href="#cb6-582" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-583"><a href="#cb6-583" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-584"><a href="#cb6-584" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-585"><a href="#cb6-585" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-586"><a href="#cb6-586" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-587"><a href="#cb6-587" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-588"><a href="#cb6-588" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-589"><a href="#cb6-589" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-590"><a href="#cb6-590" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-591"><a href="#cb6-591" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-592"><a href="#cb6-592" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-593"><a href="#cb6-593" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-594"><a href="#cb6-594" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-595"><a href="#cb6-595" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-596"><a href="#cb6-596" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-597"><a href="#cb6-597" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-598"><a href="#cb6-598" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-599"><a href="#cb6-599" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-600"><a href="#cb6-600" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-601"><a href="#cb6-601" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-602"><a href="#cb6-602" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-603"><a href="#cb6-603" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-604"><a href="#cb6-604" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-605"><a href="#cb6-605" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-606"><a href="#cb6-606" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-607"><a href="#cb6-607" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-608"><a href="#cb6-608" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-609"><a href="#cb6-609" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-610"><a href="#cb6-610" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-611"><a href="#cb6-611" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-612"><a href="#cb6-612" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-613"><a href="#cb6-613" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-614"><a href="#cb6-614" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-615"><a href="#cb6-615" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-616"><a href="#cb6-616" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-617"><a href="#cb6-617" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-618"><a href="#cb6-618" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-619"><a href="#cb6-619" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-620"><a href="#cb6-620" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-621"><a href="#cb6-621" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-622"><a href="#cb6-622" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-623"><a href="#cb6-623" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-624"><a href="#cb6-624" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-625"><a href="#cb6-625" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-626"><a href="#cb6-626" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-627"><a href="#cb6-627" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-628"><a href="#cb6-628" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-629"><a href="#cb6-629" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-630"><a href="#cb6-630" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-631"><a href="#cb6-631" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-632"><a href="#cb6-632" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-633"><a href="#cb6-633" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-634"><a href="#cb6-634" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-635"><a href="#cb6-635" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-636"><a href="#cb6-636" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-637"><a href="#cb6-637" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-638"><a href="#cb6-638" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-639"><a href="#cb6-639" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-640"><a href="#cb6-640" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-641"><a href="#cb6-641" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-642"><a href="#cb6-642" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-643"><a href="#cb6-643" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-644"><a href="#cb6-644" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-645"><a href="#cb6-645" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-646"><a href="#cb6-646" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-647"><a href="#cb6-647" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-648"><a href="#cb6-648" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-649"><a href="#cb6-649" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-650"><a href="#cb6-650" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-651"><a href="#cb6-651" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-652"><a href="#cb6-652" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-653"><a href="#cb6-653" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-654"><a href="#cb6-654" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-655"><a href="#cb6-655" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-656"><a href="#cb6-656" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-657"><a href="#cb6-657" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-658"><a href="#cb6-658" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-659"><a href="#cb6-659" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-660"><a href="#cb6-660" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-661"><a href="#cb6-661" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-662"><a href="#cb6-662" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-663"><a href="#cb6-663" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-664"><a href="#cb6-664" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-665"><a href="#cb6-665" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-666"><a href="#cb6-666" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-667"><a href="#cb6-667" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-668"><a href="#cb6-668" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-669"><a href="#cb6-669" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-670"><a href="#cb6-670" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-671"><a href="#cb6-671" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-672"><a href="#cb6-672" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-673"><a href="#cb6-673" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-674"><a href="#cb6-674" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-675"><a href="#cb6-675" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-676"><a href="#cb6-676" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-677"><a href="#cb6-677" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-678"><a href="#cb6-678" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-679"><a href="#cb6-679" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-680"><a href="#cb6-680" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-681"><a href="#cb6-681" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-682"><a href="#cb6-682" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-683"><a href="#cb6-683" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-684"><a href="#cb6-684" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-685"><a href="#cb6-685" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-686"><a href="#cb6-686" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-687"><a href="#cb6-687" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-688"><a href="#cb6-688" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-689"><a href="#cb6-689" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-690"><a href="#cb6-690" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-691"><a href="#cb6-691" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-692"><a href="#cb6-692" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-693"><a href="#cb6-693" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-694"><a href="#cb6-694" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-695"><a href="#cb6-695" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-696"><a href="#cb6-696" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-697"><a href="#cb6-697" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-698"><a href="#cb6-698" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-699"><a href="#cb6-699" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-700"><a href="#cb6-700" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-701"><a href="#cb6-701" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-702"><a href="#cb6-702" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-703"><a href="#cb6-703" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-704"><a href="#cb6-704" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-705"><a href="#cb6-705" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-706"><a href="#cb6-706" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-707"><a href="#cb6-707" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-708"><a href="#cb6-708" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-709"><a href="#cb6-709" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-710"><a href="#cb6-710" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-711"><a href="#cb6-711" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-712"><a href="#cb6-712" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-713"><a href="#cb6-713" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-714"><a href="#cb6-714" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-715"><a href="#cb6-715" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-716"><a href="#cb6-716" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-717"><a href="#cb6-717" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-718"><a href="#cb6-718" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-719"><a href="#cb6-719" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-720"><a href="#cb6-720" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-721"><a href="#cb6-721" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-722"><a href="#cb6-722" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-723"><a href="#cb6-723" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-724"><a href="#cb6-724" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-725"><a href="#cb6-725" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-726"><a href="#cb6-726" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-727"><a href="#cb6-727" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-728"><a href="#cb6-728" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-729"><a href="#cb6-729" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-730"><a href="#cb6-730" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-731"><a href="#cb6-731" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-732"><a href="#cb6-732" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-733"><a href="#cb6-733" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-734"><a href="#cb6-734" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-735"><a href="#cb6-735" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-736"><a href="#cb6-736" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-737"><a href="#cb6-737" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-738"><a href="#cb6-738" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-739"><a href="#cb6-739" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-740"><a href="#cb6-740" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-741"><a href="#cb6-741" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-742"><a href="#cb6-742" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-743"><a href="#cb6-743" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-744"><a href="#cb6-744" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-745"><a href="#cb6-745" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-746"><a href="#cb6-746" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-747"><a href="#cb6-747" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-748"><a href="#cb6-748" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-749"><a href="#cb6-749" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-750"><a href="#cb6-750" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-751"><a href="#cb6-751" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-752"><a href="#cb6-752" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-753"><a href="#cb6-753" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-754"><a href="#cb6-754" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-755"><a href="#cb6-755" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-756"><a href="#cb6-756" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-757"><a href="#cb6-757" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-758"><a href="#cb6-758" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-759"><a href="#cb6-759" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-760"><a href="#cb6-760" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-761"><a href="#cb6-761" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-762"><a href="#cb6-762" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-763"><a href="#cb6-763" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-764"><a href="#cb6-764" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-765"><a href="#cb6-765" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-766"><a href="#cb6-766" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-767"><a href="#cb6-767" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-768"><a href="#cb6-768" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-769"><a href="#cb6-769" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-770"><a href="#cb6-770" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-771"><a href="#cb6-771" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-772"><a href="#cb6-772" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-773"><a href="#cb6-773" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-774"><a href="#cb6-774" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-775"><a href="#cb6-775" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-776"><a href="#cb6-776" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-777"><a href="#cb6-777" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-778"><a href="#cb6-778" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-779"><a href="#cb6-779" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-780"><a href="#cb6-780" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-781"><a href="#cb6-781" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-782"><a href="#cb6-782" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-783"><a href="#cb6-783" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-784"><a href="#cb6-784" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-785"><a href="#cb6-785" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-786"><a href="#cb6-786" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-787"><a href="#cb6-787" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-788"><a href="#cb6-788" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-789"><a href="#cb6-789" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-790"><a href="#cb6-790" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-791"><a href="#cb6-791" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-792"><a href="#cb6-792" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-793"><a href="#cb6-793" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-794"><a href="#cb6-794" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-795"><a href="#cb6-795" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-796"><a href="#cb6-796" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-797"><a href="#cb6-797" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-798"><a href="#cb6-798" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-799"><a href="#cb6-799" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-800"><a href="#cb6-800" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-801"><a href="#cb6-801" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-802"><a href="#cb6-802" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-803"><a href="#cb6-803" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-804"><a href="#cb6-804" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-805"><a href="#cb6-805" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-806"><a href="#cb6-806" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-807"><a href="#cb6-807" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-808"><a href="#cb6-808" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-809"><a href="#cb6-809" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-810"><a href="#cb6-810" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-811"><a href="#cb6-811" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-812"><a href="#cb6-812" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-813"><a href="#cb6-813" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-814"><a href="#cb6-814" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-815"><a href="#cb6-815" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-816"><a href="#cb6-816" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-817"><a href="#cb6-817" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-818"><a href="#cb6-818" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-819"><a href="#cb6-819" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-820"><a href="#cb6-820" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-821"><a href="#cb6-821" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-822"><a href="#cb6-822" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-823"><a href="#cb6-823" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-824"><a href="#cb6-824" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-825"><a href="#cb6-825" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-826"><a href="#cb6-826" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-827"><a href="#cb6-827" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-828"><a href="#cb6-828" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-829"><a href="#cb6-829" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-830"><a href="#cb6-830" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-831"><a href="#cb6-831" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-832"><a href="#cb6-832" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-833"><a href="#cb6-833" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-834"><a href="#cb6-834" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-835"><a href="#cb6-835" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-836"><a href="#cb6-836" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-837"><a href="#cb6-837" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-838"><a href="#cb6-838" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-839"><a href="#cb6-839" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-840"><a href="#cb6-840" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-841"><a href="#cb6-841" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-842"><a href="#cb6-842" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-843"><a href="#cb6-843" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-844"><a href="#cb6-844" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-845"><a href="#cb6-845" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-846"><a href="#cb6-846" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-847"><a href="#cb6-847" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-848"><a href="#cb6-848" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-849"><a href="#cb6-849" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-850"><a href="#cb6-850" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-851"><a href="#cb6-851" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-852"><a href="#cb6-852" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-853"><a href="#cb6-853" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-854"><a href="#cb6-854" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-855"><a href="#cb6-855" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-856"><a href="#cb6-856" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-857"><a href="#cb6-857" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-858"><a href="#cb6-858" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-859"><a href="#cb6-859" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-860"><a href="#cb6-860" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-861"><a href="#cb6-861" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-862"><a href="#cb6-862" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-863"><a href="#cb6-863" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-864"><a href="#cb6-864" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-865"><a href="#cb6-865" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-866"><a href="#cb6-866" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-867"><a href="#cb6-867" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-868"><a href="#cb6-868" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-869"><a href="#cb6-869" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-870"><a href="#cb6-870" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-871"><a href="#cb6-871" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-872"><a href="#cb6-872" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-873"><a href="#cb6-873" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-874"><a href="#cb6-874" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-875"><a href="#cb6-875" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-876"><a href="#cb6-876" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-877"><a href="#cb6-877" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-878"><a href="#cb6-878" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-879"><a href="#cb6-879" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-880"><a href="#cb6-880" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-881"><a href="#cb6-881" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-882"><a href="#cb6-882" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-883"><a href="#cb6-883" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-884"><a href="#cb6-884" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-885"><a href="#cb6-885" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-886"><a href="#cb6-886" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-887"><a href="#cb6-887" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-888"><a href="#cb6-888" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-889"><a href="#cb6-889" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-890"><a href="#cb6-890" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-891"><a href="#cb6-891" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-892"><a href="#cb6-892" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-893"><a href="#cb6-893" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-894"><a href="#cb6-894" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-895"><a href="#cb6-895" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-896"><a href="#cb6-896" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-897"><a href="#cb6-897" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-898"><a href="#cb6-898" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-899"><a href="#cb6-899" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-900"><a href="#cb6-900" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-901"><a href="#cb6-901" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-902"><a href="#cb6-902" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-903"><a href="#cb6-903" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-904"><a href="#cb6-904" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-905"><a href="#cb6-905" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-906"><a href="#cb6-906" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-907"><a href="#cb6-907" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-908"><a href="#cb6-908" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-909"><a href="#cb6-909" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-910"><a href="#cb6-910" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-911"><a href="#cb6-911" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-912"><a href="#cb6-912" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-913"><a href="#cb6-913" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-914"><a href="#cb6-914" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-915"><a href="#cb6-915" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-916"><a href="#cb6-916" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-917"><a href="#cb6-917" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-918"><a href="#cb6-918" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-919"><a href="#cb6-919" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-920"><a href="#cb6-920" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-921"><a href="#cb6-921" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-922"><a href="#cb6-922" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-923"><a href="#cb6-923" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-924"><a href="#cb6-924" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-925"><a href="#cb6-925" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-926"><a href="#cb6-926" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-927"><a href="#cb6-927" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-928"><a href="#cb6-928" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-929"><a href="#cb6-929" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-930"><a href="#cb6-930" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-931"><a href="#cb6-931" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-932"><a href="#cb6-932" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-933"><a href="#cb6-933" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-934"><a href="#cb6-934" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-935"><a href="#cb6-935" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-936"><a href="#cb6-936" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-937"><a href="#cb6-937" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-938"><a href="#cb6-938" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-939"><a href="#cb6-939" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-940"><a href="#cb6-940" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-941"><a href="#cb6-941" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-942"><a href="#cb6-942" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-943"><a href="#cb6-943" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-944"><a href="#cb6-944" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-945"><a href="#cb6-945" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-946"><a href="#cb6-946" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-947"><a href="#cb6-947" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-948"><a href="#cb6-948" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-949"><a href="#cb6-949" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-950"><a href="#cb6-950" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-951"><a href="#cb6-951" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-952"><a href="#cb6-952" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-953"><a href="#cb6-953" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-954"><a href="#cb6-954" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-955"><a href="#cb6-955" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-956"><a href="#cb6-956" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-957"><a href="#cb6-957" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-958"><a href="#cb6-958" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-959"><a href="#cb6-959" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-960"><a href="#cb6-960" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-961"><a href="#cb6-961" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-962"><a href="#cb6-962" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-963"><a href="#cb6-963" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-964"><a href="#cb6-964" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-965"><a href="#cb6-965" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-966"><a href="#cb6-966" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-967"><a href="#cb6-967" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-968"><a href="#cb6-968" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-969"><a href="#cb6-969" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-970"><a href="#cb6-970" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-971"><a href="#cb6-971" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-972"><a href="#cb6-972" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-973"><a href="#cb6-973" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-974"><a href="#cb6-974" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-975"><a href="#cb6-975" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-976"><a href="#cb6-976" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-977"><a href="#cb6-977" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-978"><a href="#cb6-978" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-979"><a href="#cb6-979" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-980"><a href="#cb6-980" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-981"><a href="#cb6-981" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-982"><a href="#cb6-982" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-983"><a href="#cb6-983" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-984"><a href="#cb6-984" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-985"><a href="#cb6-985" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-986"><a href="#cb6-986" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-987"><a href="#cb6-987" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-988"><a href="#cb6-988" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-989"><a href="#cb6-989" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-990"><a href="#cb6-990" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-991"><a href="#cb6-991" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-992"><a href="#cb6-992" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-993"><a href="#cb6-993" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-994"><a href="#cb6-994" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-995"><a href="#cb6-995" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-996"><a href="#cb6-996" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-997"><a href="#cb6-997" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span>
+<span id="cb6-998"><a href="#cb6-998" tabindex="-1"></a><span class="co">#&gt; Warning: attribute variables are assumed to be spatially constant throughout</span></span>
+<span id="cb6-999"><a href="#cb6-999" tabindex="-1"></a><span class="co">#&gt; all geometries</span></span></code></pre></div>
+<p>The test’s p-value is 0.0720, indicating a lack of spatial
+dependence. If the analysis suggests that the polygons are not spatially
+independent, a descriptive analysis can be performed using a
+generalization of the <span class="math inline">\(H_{12}\)</span>
+function (typically <span class="math inline">\(K_{12}\)</span> or <span class="math inline">\(L_{12}\)</span>, with the latter being the package
+default) used for analyzing spatial point patterns.</p>
+<p>We’ll now create point-wise confidence bands based on the <span class="math inline">\(L_{12}\)</span> null hypothesis. These bands will
+be plotted against the <span class="math inline">\(L_{12}\)</span>
+function calculated from the real data. A significant result with the
+black curve (representing the real data) below the envelope suggests
+that the two polygon types repel each other. Conversely, if the black
+curve is above the envelope, it indicates attraction. Remember that
+these envelopes are for descriptive analysis, not inference. The
+<em>p-value</em> determines whether to reject the hypothesis of spatial
+independence.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>sig_level <span class="ot">&lt;-</span> my_ht<span class="sc">$</span>alpha</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>sig_plot <span class="ot">&lt;-</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">r =</span> my_ht<span class="sc">$</span>distances,</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>             <span class="at">h =</span> my_ht<span class="sc">$</span>mc_funct[<span class="fu">NROW</span>(my_ht<span class="sc">$</span>mc_funct), ],</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>             <span class="at">l =</span> <span class="fu">apply</span>(my_ht<span class="sc">$</span>mc_funct, <span class="dv">2</span>, quantile,</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>                       <span class="at">prob =</span> .<span class="dv">5</span> <span class="sc">*</span> sig_level),</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>             <span class="at">u =</span> <span class="fu">apply</span>(my_ht<span class="sc">$</span>mc_funct, <span class="dv">2</span>, quantile,</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>                       <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">-</span> .<span class="dv">5</span> <span class="sc">*</span> sig_level))</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="do">## par(mfrow = c(1, 2))</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="do">## ## plot density part</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="do">## den &lt;- density(my_ht$mc_sample)</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="do">## plot(den, main = sprintf(&quot;Test statistic (p-value = %.4f)&quot;,</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="do">##                          my_ht$p_value),</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="do">##      xlab = &quot;u&quot;, ylab = &quot;density&quot;)</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="do">## value &lt;- my_ht$mc_sample[length(my_ht$mc_sample)]</span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="do">## polygon(c(den$x[den$x &gt;= value], value),</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="do">##         c(den$y[den$x &gt;= value], 0),</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="do">##         col = &quot;coral1&quot;,</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="do">##         border = &quot;transparent&quot;)</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="do">## lines(den)</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="do">## H function</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="fu">with</span>(sig_plot, <span class="fu">plot</span>(<span class="at">x =</span> r, <span class="at">y =</span> h, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a>                    <span class="at">col =</span> <span class="dv">2</span>,</span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a>                    <span class="at">main =</span> <span class="st">&quot;Local envelope&quot;</span>,</span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a>                    <span class="at">xlab =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a>                    <span class="at">ylab =</span> <span class="fu">expression</span>(H[<span class="dv">12</span>](r)),</span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a>                    <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(h, l, u))))</span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="fu">with</span>(sig_plot, <span class="fu">lines</span>(<span class="at">x =</span> r, <span class="at">y =</span> l, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="dv">2</span>))</span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="fu">with</span>(sig_plot, <span class="fu">lines</span>(<span class="at">x =</span> r, <span class="at">y =</span> u, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="dv">2</span>))</span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="fu">with</span>(sig_plot,</span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a>     <span class="fu">polygon</span>(<span class="fu">c</span>(r, <span class="fu">rev</span>(r)), <span class="fu">c</span>(l, <span class="fu">rev</span>(u)),</span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a>             <span class="at">col =</span> <span class="st">&quot;coral1&quot;</span>, <span class="at">lty =</span> <span class="dv">0</span>))</span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="fu">with</span>(sig_plot, <span class="fu">lines</span>(<span class="at">x =</span> r, <span class="at">y =</span> h,</span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a>                     <span class="at">col =</span> <span class="dv">1</span>))</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-godoy2022testing" class="csl-entry">
+Godoy, Lucas da Cunha, Renato Martins Assunção, and Kevin A. Butler.
+2022. <span>“Testing the Spatial Association of Different Types of
+Polygons.”</span> <em>Spatial Statistics</em> 51: 100695.
+https://doi.org/<a href="https://doi.org/10.1016/j.spasta.2022.100695">https://doi.org/10.1016/j.spasta.2022.100695</a>.
+</div>
+<div id="ref-mcgarigal2013landscape" class="csl-entry">
+McGarigal, Kevin. 2013. <span>“Landscape Pattern Metrics.”</span> In
+<em>Encyclopedia of Environmetrics</em>. John Wiley &amp; Sons, Ltd.
+https://doi.org/<a href="https://doi.org/10.1002/9780470057339.val006.pub2">https://doi.org/10.1002/9780470057339.val006.pub2</a>.
+</div>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>a technique that shifts the polygons to simulate
+different spatial arrangements<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
